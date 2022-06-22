@@ -1,4 +1,4 @@
-token = "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"
-visibility="public"
+token = "your personal access token"
+visibility = "public"
 name = "MyProject"
-description="Commiting self project files to this repo"
+description = "Commiting massage"
