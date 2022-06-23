@@ -1,0 +1,1133 @@
+2022-06-23T00:09:46.194Z [INFO]  Terraform version: 1.2.3
+2022-06-23T00:09:46.194Z [DEBUG] using github.com/hashicorp/go-tfe v1.0.0
+2022-06-23T00:09:46.194Z [DEBUG] using github.com/hashicorp/hcl/v2 v2.12.0
+2022-06-23T00:09:46.194Z [DEBUG] using github.com/hashicorp/terraform-config-inspect v0.0.0-20210209133302-4fd17a0faac2
+2022-06-23T00:09:46.194Z [DEBUG] using github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734
+2022-06-23T00:09:46.194Z [DEBUG] using github.com/zclconf/go-cty v1.10.0
+2022-06-23T00:09:46.194Z [INFO]  Go runtime version: go1.18.1
+2022-06-23T00:09:46.194Z [INFO]  CLI args: []string{"terraform", "plan"}
+2022-06-23T00:09:46.194Z [DEBUG] Attempting to open CLI config file: /home/ec2-user/.terraformrc
+2022-06-23T00:09:46.194Z [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2022-06-23T00:09:46.194Z [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2022-06-23T00:09:46.194Z [DEBUG] ignoring non-existing provider search directory /home/ec2-user/.terraform.d/plugins
+2022-06-23T00:09:46.194Z [DEBUG] ignoring non-existing provider search directory /home/ec2-user/.local/share/terraform/plugins
+2022-06-23T00:09:46.194Z [DEBUG] ignoring non-existing provider search directory /usr/local/share/terraform/plugins
+2022-06-23T00:09:46.194Z [DEBUG] ignoring non-existing provider search directory /usr/share/terraform/plugins
+2022-06-23T00:09:46.195Z [INFO]  CLI command args: []string{"plan"}
+2022-06-23T00:09:46.206Z [INFO]  AWS Auth provider used: "SharedCredentialsProvider"
+2022-06-23T00:09:46.206Z [DEBUG] Trying to get account information via sts:GetCallerIdentity
+2022-06-23T00:09:46.206Z [DEBUG] [aws-sdk-go] DEBUG: Request sts/GetCallerIdentity Details:
+---[ REQUEST POST-SIGN ]-----------------------------
+POST / HTTP/1.1
+Host: sts.amazonaws.com
+User-Agent: APN/1.0 HashiCorp/1.0 Terraform/1.2.3 aws-sdk-go/1.42.35 (go1.18.1; linux; amd64)
+Content-Length: 43
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAZBKQRVPMTPKYM64F/20220623/us-east-1/sts/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=eabccc00df35fa931fd9726ed760687e00c3c6a81e8dd2013422632608682355
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+X-Amz-Date: 20220623T000946Z
+Accept-Encoding: gzip
+
+Action=GetCallerIdentity&Version=2011-06-15
+-----------------------------------------------------
+2022-06-23T00:09:46.234Z [DEBUG] [aws-sdk-go] DEBUG: Response sts/GetCallerIdentity Details:
+---[ RESPONSE ]--------------------------------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Length: 404
+Content-Type: text/xml
+Date: Thu, 23 Jun 2022 00:09:46 GMT
+X-Amzn-Requestid: 67c82378-a128-4a9f-978c-9fa72f0a6265
+
+
+-----------------------------------------------------
+2022-06-23T00:09:46.234Z [DEBUG] [aws-sdk-go] <GetCallerIdentityResponse xmlns="https://sts.amazonaws.com/doc/2011-06-15/">
+  <GetCallerIdentityResult>
+    <Arn>arn:aws:iam::621328575449:user/ansible</Arn>
+    <UserId>AIDAZBKQRVPMWWNZ7CRYO</UserId>
+    <Account>621328575449</Account>
+  </GetCallerIdentityResult>
+  <ResponseMetadata>
+    <RequestId>67c82378-a128-4a9f-978c-9fa72f0a6265</RequestId>
+  </ResponseMetadata>
+</GetCallerIdentityResponse>
+2022-06-23T00:09:47.217Z [DEBUG] checking for provisioner in "."
+2022-06-23T00:09:47.220Z [DEBUG] checking for provisioner in "/usr/bin"
+2022-06-23T00:09:47.221Z [INFO]  backend/local: starting Plan operation
+2022-06-23T00:09:47.221Z [DEBUG] [aws-sdk-go] DEBUG: Request s3/ListObjects Details:
+---[ REQUEST POST-SIGN ]-----------------------------
+GET /?max-keys=1000&prefix=env%3A%2F HTTP/1.1
+Host: mytfs3bucket.s3.amazonaws.com
+User-Agent: APN/1.0 HashiCorp/1.0 Terraform/1.2.3 aws-sdk-go/1.42.35 (go1.18.1; linux; amd64)
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAZBKQRVPMTPKYM64F/20220623/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=8ef25b680127c81ebdacccb7394e9c8b19118fa5195fe194ba97c297fb367797
+X-Amz-Content-Sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+X-Amz-Date: 20220623T000947Z
+Accept-Encoding: gzip
+
+
+-----------------------------------------------------
+2022-06-23T00:09:47.273Z [DEBUG] [aws-sdk-go] DEBUG: Response s3/ListObjects Details:
+---[ RESPONSE ]--------------------------------------
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: application/xml
+Date: Thu, 23 Jun 2022 00:09:48 GMT
+Server: AmazonS3
+X-Amz-Bucket-Region: us-east-1
+X-Amz-Id-2: AJqx/AKmUKj8gyDAxPCe3s8Z2dCOraVL0RXEcJ+Ex5Eu96LDiWNYe0gD9iE4MjsUaKHymr9xTQY=
+X-Amz-Request-Id: TZD4621V6B9PNMDA
+
+
+-----------------------------------------------------
+2022-06-23T00:09:47.273Z [DEBUG] [aws-sdk-go] <?xml version="1.0" encoding="UTF-8"?>
+<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>mytfs3bucket</Name><Prefix>env:/</Prefix><Marker></Marker><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>env:/development/terraform.tfstate</Key><LastModified>2022-04-23T17:32:44.000Z</LastModified><ETag>&quot;8c777aea9f1671aec2b6ff6058b46278&quot;</ETag><Size>155</Size><Owner><ID>93a60178039d96ca3dfb82c680c0779cef926534c9ea30077bbcae4c15cc5d05</ID><DisplayName>jamesotajonov</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>env:/production/terraform.tfstate</Key><LastModified>2022-04-23T17:30:00.000Z</LastModified><ETag>&quot;5a8b6d89dfa4e95888db4fcfb2b78348&quot;</ETag><Size>155</Size><Owner><ID>93a60178039d96ca3dfb82c680c0779cef926534c9ea30077bbcae4c15cc5d05</ID><DisplayName>jamesotajonov</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents><Contents><Key>env:/testing/terraform.tfstate</Key><LastModified>2022-04-23T17:32:57.000Z</LastModified><ETag>&quot;c9f8d2f194a1c879e0a604162fae61f4&quot;</ETag><Size>155</Size><Owner><ID>93a60178039d96ca3dfb82c680c0779cef926534c9ea30077bbcae4c15cc5d05</ID><DisplayName>jamesotajonov</DisplayName></Owner><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+2022-06-23T00:09:47.273Z [DEBUG] [aws-sdk-go] DEBUG: Request s3/GetObject Details:
+---[ REQUEST POST-SIGN ]-----------------------------
+GET /terraform.tfstate HTTP/1.1
+Host: mytfs3bucket.s3.amazonaws.com
+User-Agent: APN/1.0 HashiCorp/1.0 Terraform/1.2.3 aws-sdk-go/1.42.35 (go1.18.1; linux; amd64)
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAZBKQRVPMTPKYM64F/20220623/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=951466f481fa20b3a28f7725c40b91d4a82131d286e3a7dff90175157e3787cd
+X-Amz-Content-Sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+X-Amz-Date: 20220623T000947Z
+Accept-Encoding: gzip
+
+
+-----------------------------------------------------
+2022-06-23T00:09:47.310Z [DEBUG] [aws-sdk-go] DEBUG: Response s3/GetObject Details:
+---[ RESPONSE ]--------------------------------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Length: 155
+Accept-Ranges: bytes
+Content-Type: application/json
+Date: Thu, 23 Jun 2022 00:09:48 GMT
+Etag: "18978460ab06b7186fcfcd10ef7d263b"
+Last-Modified: Wed, 22 Jun 2022 20:55:33 GMT
+Server: AmazonS3
+X-Amz-Id-2: UvtSshljCkvG6mv+wfdyoPgUBE7zK8MD7k/urYOeGVzq7QqZkqKs8dH0ZAuT3UslzehICOS19qY=
+X-Amz-Request-Id: TZD4MHN7DSFZVXJV
+X-Amz-Version-Id: OqRfvQeiGagqP.CAxhf_lSsGoe6hfJAm
+
+
+-----------------------------------------------------
+2022-06-23T00:09:47.310Z [DEBUG] [aws-sdk-go]
+2022-06-23T00:09:47.311Z [DEBUG] created provider logger: level=debug
+2022-06-23T00:09:47.311Z [INFO]  provider: configuring client automatic mTLS
+2022-06-23T00:09:47.336Z [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5]
+2022-06-23T00:09:47.340Z [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 pid=7080
+2022-06-23T00:09:47.340Z [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5
+2022-06-23T00:09:47.414Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: configuring server automatic mTLS: timestamp=2022-06-23T00:09:47.413Z
+2022-06-23T00:09:47.491Z [DEBUG] provider: using plugin: version=5
+2022-06-23T00:09:47.491Z [DEBUG] provider.terraform-provider-aws_v3.75.2_x5: plugin address: address=/tmp/plugin813006818 network=unix timestamp=2022-06-23T00:09:47.479Z
+2022-06-23T00:09:47.871Z [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 pid=7080
+2022-06-23T00:09:47.871Z [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Canceled desc = context canceled"
+2022-06-23T00:09:47.871Z [DEBUG] provider: plugin exited
+2022-06-23T00:09:47.871Z [DEBUG] Building and walking validate graph
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_instance.ansible" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "data.aws_ami.rhel" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_eip.eip_all" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_subnet.public_subnet" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_security_group.allow_ssh" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_key_pair.keypair" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_route_table.public-rt" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_instance.jenkins" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_vpc.vpc_tf" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_internet_gateway.gateway" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_eip.eip_jenkins" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_route_table_association.public-rt" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_eip.eip_k8s" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] ProviderTransformer: "aws_instance.k8s" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:47.872Z [DEBUG] pruning unused provider["registry.terraform.io/hashicorp/aws"].ohio
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "aws_vpc.vpc_tf" references: [var.vpc_cidr]
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "aws_route_table_association.public-rt" references: [aws_route_table.public-rt aws_subnet.public_subnet]
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "aws_instance.k8s" references: [data.aws_ami.rhel aws_security_group.allow_ssh var.key-name aws_subnet.public_subnet var.instance-type-k8s]
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "var.cidr-open" references: []
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "aws_subnet.public_subnet" references: [aws_vpc.vpc_tf var.az-psubnet var.public_subnet_cidr]
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "aws_internet_gateway.gateway" references: [aws_vpc.vpc_tf]
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "var.vpc_cidr" references: []
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "output.kubernetes_instance_public_ip" references: [aws_instance.k8s]
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "output.ansible_instance_public_ip" references: [aws_instance.ansible]
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/hashicorp/aws\"]" references: [var.aws_region]
+2022-06-23T00:09:47.873Z [DEBUG] ReferenceTransformer: "aws_instance.ansible" references: [aws_subnet.public_subnet var.instance-type-ansible aws_security_group.allow_ssh data.aws_ami.rhel var.key-name]
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "data.aws_ami.rhel" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.aws_region" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.instance-type-jenkins" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "aws_security_group.allow_ssh" references: [var.sg_name aws_vpc.vpc_tf var.cidr-open var.protocol var.protocol var.cidr-open var.cidr-open]
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "aws_eip.eip_k8s" references: [aws_instance.k8s]
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "aws_key_pair.keypair" references: [var.key-name]
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "aws_eip.eip_all" references: [aws_instance.ansible]
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.protocol" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "aws_route_table.public-rt" references: [aws_vpc.vpc_tf aws_internet_gateway.gateway var.cidr-open]
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "aws_instance.jenkins" references: [data.aws_ami.rhel var.key-name aws_subnet.public_subnet var.instance-type-jenkins aws_security_group.allow_ssh]
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.key-name" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.instance-type-ansible" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.public_subnet_cidr" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.az-psubnet" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "aws_eip.eip_jenkins" references: [aws_instance.jenkins]
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.instance-type-k8s" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "var.sg_name" references: []
+2022-06-23T00:09:47.874Z [DEBUG] ReferenceTransformer: "output.jenkins_instance_public_ip" references: [aws_instance.jenkins]
+2022-06-23T00:09:47.876Z [DEBUG] Starting graph walk: walkValidate
+2022-06-23T00:09:47.883Z [DEBUG] created provider logger: level=debug
+2022-06-23T00:09:47.883Z [INFO]  provider: configuring client automatic mTLS
+2022-06-23T00:09:47.917Z [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5]
+2022-06-23T00:09:47.920Z [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 pid=7086
+2022-06-23T00:09:47.920Z [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5
+2022-06-23T00:09:48.000Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: configuring server automatic mTLS: timestamp=2022-06-23T00:09:47.999Z
+2022-06-23T00:09:48.067Z [DEBUG] provider: using plugin: version=5
+2022-06-23T00:09:48.067Z [DEBUG] provider.terraform-provider-aws_v3.75.2_x5: plugin address: address=/tmp/plugin901580283 network=unix timestamp=2022-06-23T00:09:48.067Z
+2022-06-23T00:09:48.641Z [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 pid=7086
+2022-06-23T00:09:48.641Z [DEBUG] provider: plugin exited
+2022-06-23T00:09:48.641Z [INFO]  backend/local: plan calling Plan
+2022-06-23T00:09:48.641Z [DEBUG] Building and walking plan graph for NormalMode
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_key_pair.keypair (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_eip.eip_jenkins (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_subnet.public_subnet (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_internet_gateway.gateway (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_security_group.allow_ssh (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_eip.eip_k8s (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_route_table.public-rt (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_instance.k8s (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_eip.eip_all (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_instance.ansible (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_vpc.vpc_tf (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_instance.jenkins (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "aws_route_table_association.public-rt (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] ProviderTransformer: "data.aws_ami.rhel (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:48.642Z [DEBUG] pruning unused provider["registry.terraform.io/hashicorp/aws"].ohio
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_key_pair.keypair (expand)" references: [var.key-name]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_eip.eip_jenkins (expand)" references: [aws_instance.jenkins (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.instance-type-ansible" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.cidr-open" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_subnet.public_subnet (expand)" references: [var.public_subnet_cidr aws_vpc.vpc_tf (expand) var.az-psubnet]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_vpc.vpc_tf (expand)" references: [var.vpc_cidr]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.aws_region" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.key-name" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "output.kubernetes_instance_public_ip" references: [aws_instance.k8s (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.instance-type-jenkins" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.vpc_cidr" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "output.ansible_instance_public_ip" references: [aws_instance.ansible (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_instance.k8s (expand)" references: [aws_security_group.allow_ssh (expand) var.key-name aws_subnet.public_subnet (expand) var.instance-type-k8s data.aws_ami.rhel (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "data.aws_ami.rhel (expand)" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.az-psubnet" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_eip.eip_all (expand)" references: [aws_instance.ansible (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_internet_gateway.gateway (expand)" references: [aws_vpc.vpc_tf (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_instance.jenkins (expand)" references: [aws_subnet.public_subnet (expand) var.instance-type-jenkins aws_security_group.allow_ssh (expand) data.aws_ami.rhel (expand) var.key-name]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_security_group.allow_ssh (expand)" references: [var.sg_name aws_vpc.vpc_tf (expand) var.protocol var.cidr-open var.cidr-open var.protocol var.cidr-open]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_instance.ansible (expand)" references: [var.key-name aws_subnet.public_subnet (expand) var.instance-type-ansible aws_security_group.allow_ssh (expand) data.aws_ami.rhel (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.sg_name" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "output.jenkins_instance_public_ip" references: [aws_instance.jenkins (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/hashicorp/aws\"]" references: [var.aws_region]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.instance-type-k8s" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.protocol" references: []
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_eip.eip_k8s (expand)" references: [aws_instance.k8s (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_route_table.public-rt (expand)" references: [aws_vpc.vpc_tf (expand) var.cidr-open aws_internet_gateway.gateway (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "aws_route_table_association.public-rt (expand)" references: [aws_route_table.public-rt (expand) aws_subnet.public_subnet (expand)]
+2022-06-23T00:09:48.643Z [DEBUG] ReferenceTransformer: "var.public_subnet_cidr" references: []
+2022-06-23T00:09:48.645Z [DEBUG] Starting graph walk: walkPlan
+2022-06-23T00:09:48.645Z [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2022-06-23T00:09:48.646Z [DEBUG] created provider logger: level=debug
+2022-06-23T00:09:48.646Z [INFO]  provider: configuring client automatic mTLS
+2022-06-23T00:09:48.674Z [DEBUG] provider: starting plugin: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 args=[.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5]
+2022-06-23T00:09:48.679Z [DEBUG] provider: plugin started: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 pid=7098
+2022-06-23T00:09:48.679Z [DEBUG] provider: waiting for RPC address: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5
+2022-06-23T00:09:48.788Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: configuring server automatic mTLS: timestamp=2022-06-23T00:09:48.779Z
+2022-06-23T00:09:48.855Z [DEBUG] provider: using plugin: version=5
+2022-06-23T00:09:48.855Z [DEBUG] provider.terraform-provider-aws_v3.75.2_x5: plugin address: network=unix address=/tmp/plugin044458918 timestamp=2022-06-23T00:09:48.854Z
+2022-06-23T00:09:49.351Z [WARN]  ValidateProviderConfig from "provider[\"registry.terraform.io/hashicorp/aws\"]" changed the config value, but that value is unused
+2022-06-23T00:09:49.363Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [INFO] AWS Auth provider used: "SharedCredentialsProvider": timestamp=2022-06-23T00:09:49.354Z
+2022-06-23T00:09:49.363Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] Trying to get account information via sts:GetCallerIdentity: timestamp=2022-06-23T00:09:49.355Z
+2022-06-23T00:09:49.363Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] DEBUG: Request sts/GetCallerIdentity Details:
+---[ REQUEST POST-SIGN ]-----------------------------
+POST / HTTP/1.1
+Host: sts.amazonaws.com
+User-Agent: APN/1.0 HashiCorp/1.0 Terraform/1.2.3 (+https://www.terraform.io) terraform-provider-aws/dev (+https://registry.terraform.io/providers/hashicorp/aws) aws-sdk-go/1.44.13 (go1.16; linux; amd64)
+Content-Length: 43
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAZBKQRVPMTPKYM64F/20220623/us-east-1/sts/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=6af673adfecfb863b836e8aa00a856b2d754656ebc5ad7da062d5b74d3b46b94
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+X-Amz-Date: 20220623T000949Z
+Accept-Encoding: gzip
+
+Action=GetCallerIdentity&Version=2011-06-15
+-----------------------------------------------------: timestamp=2022-06-23T00:09:49.355Z
+2022-06-23T00:09:49.413Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] DEBUG: Response sts/GetCallerIdentity Details:
+---[ RESPONSE ]--------------------------------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Length: 404
+Content-Type: text/xml
+Date: Thu, 23 Jun 2022 00:09:48 GMT
+X-Amzn-Requestid: 49d4158b-c9b9-4c9a-b557-6b908d338d2a
+
+
+-----------------------------------------------------: timestamp=2022-06-23T00:09:49.412Z
+2022-06-23T00:09:49.413Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] <GetCallerIdentityResponse xmlns="https://sts.amazonaws.com/doc/2011-06-15/">
+  <GetCallerIdentityResult>
+    <Arn>arn:aws:iam::621328575449:user/ansible</Arn>
+    <UserId>AIDAZBKQRVPMWWNZ7CRYO</UserId>
+    <Account>621328575449</Account>
+  </GetCallerIdentityResult>
+  <ResponseMetadata>
+    <RequestId>49d4158b-c9b9-4c9a-b557-6b908d338d2a</RequestId>
+  </ResponseMetadata>
+</GetCallerIdentityResponse>: timestamp=2022-06-23T00:09:49.412Z
+2022-06-23T00:09:49.413Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] Trying to get account information via sts:GetCallerIdentity: timestamp=2022-06-23T00:09:49.412Z
+2022-06-23T00:09:49.413Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] DEBUG: Request sts/GetCallerIdentity Details:
+---[ REQUEST POST-SIGN ]-----------------------------
+POST / HTTP/1.1
+Host: sts.amazonaws.com
+User-Agent: APN/1.0 HashiCorp/1.0 Terraform/1.2.3 (+https://www.terraform.io) terraform-provider-aws/dev (+https://registry.terraform.io/providers/hashicorp/aws) aws-sdk-go/1.44.13 (go1.16; linux; amd64)
+Content-Length: 43
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAZBKQRVPMTPKYM64F/20220623/us-east-1/sts/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=6af673adfecfb863b836e8aa00a856b2d754656ebc5ad7da062d5b74d3b46b94
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+X-Amz-Date: 20220623T000949Z
+Accept-Encoding: gzip
+
+Action=GetCallerIdentity&Version=2011-06-15
+-----------------------------------------------------: timestamp=2022-06-23T00:09:49.412Z
+2022-06-23T00:09:49.427Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] DEBUG: Response sts/GetCallerIdentity Details:
+---[ RESPONSE ]--------------------------------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Length: 404
+Content-Type: text/xml
+Date: Thu, 23 Jun 2022 00:09:49 GMT
+X-Amzn-Requestid: 5375dfa3-b039-4c48-b3c8-a0f44d58378f
+
+
+-----------------------------------------------------: timestamp=2022-06-23T00:09:49.425Z
+2022-06-23T00:09:49.427Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] <GetCallerIdentityResponse xmlns="https://sts.amazonaws.com/doc/2011-06-15/">
+  <GetCallerIdentityResult>
+    <Arn>arn:aws:iam::621328575449:user/ansible</Arn>
+    <UserId>AIDAZBKQRVPMWWNZ7CRYO</UserId>
+    <Account>621328575449</Account>
+  </GetCallerIdentityResult>
+  <ResponseMetadata>
+    <RequestId>5375dfa3-b039-4c48-b3c8-a0f44d58378f</RequestId>
+  </ResponseMetadata>
+</GetCallerIdentityResponse>: timestamp=2022-06-23T00:09:49.425Z
+2022-06-23T00:09:49.435Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] DEBUG: Request ec2/DescribeAccountAttributes Details:
+---[ REQUEST POST-SIGN ]-----------------------------
+POST / HTTP/1.1
+Host: ec2.us-east-1.amazonaws.com
+User-Agent: APN/1.0 HashiCorp/1.0 Terraform/1.2.3 (+https://www.terraform.io) terraform-provider-aws/dev (+https://registry.terraform.io/providers/hashicorp/aws) aws-sdk-go/1.44.13 (go1.16; linux; amd64)
+Content-Length: 87
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAZBKQRVPMTPKYM64F/20220623/us-east-1/ec2/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=07fb889ad1a8aec813bc829fa1dced802506f35c30d59ed9ad914fdec14b42e5
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+X-Amz-Date: 20220623T000949Z
+Accept-Encoding: gzip
+
+Action=DescribeAccountAttributes&AttributeName.1=supported-platforms&Version=2016-11-15
+-----------------------------------------------------: timestamp=2022-06-23T00:09:49.435Z
+2022-06-23T00:09:49.498Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] DEBUG: Response ec2/DescribeAccountAttributes Details:
+---[ RESPONSE ]--------------------------------------
+HTTP/1.1 200 OK
+Connection: close
+Content-Length: 540
+Cache-Control: no-cache, no-store
+Content-Type: text/xml;charset=UTF-8
+Date: Thu, 23 Jun 2022 00:09:48 GMT
+Keep-Alive: timeout=20
+Server: AmazonEC2
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Amzn-Requestid: e670a430-1deb-4f70-8a23-4e8e67e4cb55
+
+
+-----------------------------------------------------: timestamp=2022-06-23T00:09:49.497Z
+2022-06-23T00:09:49.498Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] <?xml version="1.0" encoding="UTF-8"?>
+<DescribeAccountAttributesResponse xmlns="http://ec2.amazonaws.com/doc/2016-11-15/">
+    <requestId>e670a430-1deb-4f70-8a23-4e8e67e4cb55</requestId>
+    <accountAttributeSet>
+        <item>
+            <attributeName>supported-platforms</attributeName>
+            <attributeValueSet>
+                <item>
+                    <attributeValue>VPC</attributeValue>
+                </item>
+            </attributeValueSet>
+        </item>
+    </accountAttributeSet>
+</DescribeAccountAttributesResponse>: timestamp=2022-06-23T00:09:49.498Z
+2022-06-23T00:09:49.498Z [DEBUG] Resource instance state not found for node "data.aws_ami.rhel", instance data.aws_ami.rhel
+2022-06-23T00:09:49.498Z [DEBUG] ReferenceTransformer: "data.aws_ami.rhel" references: []
+2022-06-23T00:09:49.499Z [DEBUG] Resource instance state not found for node "aws_key_pair.keypair", instance aws_key_pair.keypair
+2022-06-23T00:09:49.500Z [INFO]  ReferenceTransformer: reference not found: "var.key-name"
+2022-06-23T00:09:49.500Z [DEBUG] ReferenceTransformer: "aws_key_pair.keypair" references: []
+2022-06-23T00:09:49.500Z [DEBUG] refresh: aws_key_pair.keypair: no state, so not refreshing
+2022-06-23T00:09:49.502Z [DEBUG] Resource instance state not found for node "aws_vpc.vpc_tf", instance aws_vpc.vpc_tf
+2022-06-23T00:09:49.502Z [INFO]  ReferenceTransformer: reference not found: "var.vpc_cidr"
+2022-06-23T00:09:49.502Z [DEBUG] ReferenceTransformer: "aws_vpc.vpc_tf" references: []
+2022-06-23T00:09:49.503Z [DEBUG] refresh: aws_vpc.vpc_tf: no state, so not refreshing
+2022-06-23T00:09:49.509Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] Reading AMI: {
+  Filters: [{
+      Name: "root-device-type",
+      Values: ["ebs"]
+    },{
+      Name: "name",
+      Values: ["RHEL-8.*_HVM-????????-x86_64-*-Hourly*-GP2"]
+    },{
+      Name: "virtualization-type",
+      Values: ["hvm"]
+    }],
+  Owners: ["309956199498"]
+}: timestamp=2022-06-23T00:09:49.508Z
+2022-06-23T00:09:49.512Z [WARN]  Provider "registry.terraform.io/hashicorp/aws" produced an invalid plan for aws_vpc.vpc_tf, but we are tolerating it because it is using the legacy plugin SDK.
+    The following problems may be the cause of any confusing errors from downstream operations:
+      - .enable_dns_support: planned value cty.True for a non-computed attribute
+      - .instance_tenancy: planned value cty.StringVal("default") for a non-computed attribute
+2022-06-23T00:09:49.513Z [DEBUG] Resource instance state not found for node "aws_internet_gateway.gateway", instance aws_internet_gateway.gateway
+2022-06-23T00:09:49.513Z [DEBUG] ReferenceTransformer: "aws_internet_gateway.gateway" references: []
+2022-06-23T00:09:49.513Z [DEBUG] refresh: aws_internet_gateway.gateway: no state, so not refreshing
+2022-06-23T00:09:49.513Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] DEBUG: Request ec2/DescribeImages Details:
+---[ REQUEST POST-SIGN ]-----------------------------
+POST / HTTP/1.1
+Host: ec2.us-east-1.amazonaws.com
+User-Agent: APN/1.0 HashiCorp/1.0 Terraform/1.2.3 (+https://www.terraform.io) terraform-provider-aws/dev (+https://registry.terraform.io/providers/hashicorp/aws) aws-sdk-go/1.44.13 (go1.16; linux; amd64)
+Content-Length: 269
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAZBKQRVPMTPKYM64F/20220623/us-east-1/ec2/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=567dd1f3a4702e62e3e27ac97a55396806e3cbd556b1e03444a48102d0af8d74
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+X-Amz-Date: 20220623T000949Z
+Accept-Encoding: gzip
+
+Action=DescribeImages&Filter.1.Name=root-device-type&Filter.1.Value.1=ebs&Filter.2.Name=name&Filter.2.Value.1=RHEL-8.%2A_HVM-%3F%3F%3F%3F%3F%3F%3F%3F-x86_64-%2A-Hourly%2A-GP2&Filter.3.Name=virtualization-type&Filter.3.Value.1=hvm&Owner.1=309956199498&Version=2016-11-15
+-----------------------------------------------------: timestamp=2022-06-23T00:09:49.512Z
+2022-06-23T00:09:49.514Z [WARN]  Provider "registry.terraform.io/hashicorp/aws" produced an invalid plan for aws_key_pair.keypair, but we are tolerating it because it is using the legacy plugin SDK.
+    The following problems may be the cause of any confusing errors from downstream operations:
+      - .public_key: planned value cty.StringVal("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCPLQaupjQH8kWPBDtdmbtMYJiLNRh/aGCFpjnyaUF6jOvgst9AV6q6+ZEy9Tu0ERIQKR3pSdB7Ak1x1tb/zd83l8fB/PTpGaRWzTIqJbYjvVNzUFPCW/6hh5siuk5lt5GpKQ70ZItVsbt5qd/idZ7UXx7CWM2kGe978GFJcTU66J8NEttJbUXkW/wCyHDZfYHKynPO0A0xzO3la6WBR4U0/YTz6/Q0SGVmse63TyvOEqG8N3Sc9yRsnj8KoSu6iYLiPuCvQTtSbNNwjU5Akzpoor6i48Lo7jwQp0deSDmKSsutj1q8ORlL7JUMHyZdEhX1y4ntbbozHkDr9KWYtfn9") does not match config value cty.StringVal("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCPLQaupjQH8kWPBDtdmbtMYJiLNRh/aGCFpjnyaUF6jOvgst9AV6q6+ZEy9Tu0ERIQKR3pSdB7Ak1x1tb/zd83l8fB/PTpGaRWzTIqJbYjvVNzUFPCW/6hh5siuk5lt5GpKQ70ZItVsbt5qd/idZ7UXx7CWM2kGe978GFJcTU66J8NEttJbUXkW/wCyHDZfYHKynPO0A0xzO3la6WBR4U0/YTz6/Q0SGVmse63TyvOEqG8N3Sc9yRsnj8KoSu6iYLiPuCvQTtSbNNwjU5Akzpoor6i48Lo7jwQp0deSDmKSsutj1q8ORlL7JUMHyZdEhX1y4ntbbozHkDr9KWYtfn9\n")
+2022-06-23T00:09:49.514Z [DEBUG] Resource instance state not found for node "aws_subnet.public_subnet", instance aws_subnet.public_subnet
+2022-06-23T00:09:49.514Z [INFO]  ReferenceTransformer: reference not found: "var.az-psubnet"
+2022-06-23T00:09:49.514Z [INFO]  ReferenceTransformer: reference not found: "var.public_subnet_cidr"
+2022-06-23T00:09:49.514Z [DEBUG] ReferenceTransformer: "aws_subnet.public_subnet" references: []
+2022-06-23T00:09:49.514Z [DEBUG] refresh: aws_subnet.public_subnet: no state, so not refreshing
+2022-06-23T00:09:49.515Z [DEBUG] Resource instance state not found for node "aws_security_group.allow_ssh", instance aws_security_group.allow_ssh
+2022-06-23T00:09:49.515Z [INFO]  ReferenceTransformer: reference not found: "var.sg_name"
+2022-06-23T00:09:49.515Z [INFO]  ReferenceTransformer: reference not found: "var.protocol"
+2022-06-23T00:09:49.515Z [INFO]  ReferenceTransformer: reference not found: "var.cidr-open"
+2022-06-23T00:09:49.515Z [INFO]  ReferenceTransformer: reference not found: "var.cidr-open"
+2022-06-23T00:09:49.515Z [INFO]  ReferenceTransformer: reference not found: "var.protocol"
+2022-06-23T00:09:49.515Z [INFO]  ReferenceTransformer: reference not found: "var.cidr-open"
+2022-06-23T00:09:49.515Z [DEBUG] ReferenceTransformer: "aws_security_group.allow_ssh" references: []
+2022-06-23T00:09:49.515Z [DEBUG] refresh: aws_security_group.allow_ssh: no state, so not refreshing
+2022-06-23T00:09:49.527Z [WARN]  Provider "registry.terraform.io/hashicorp/aws" produced an invalid plan for aws_security_group.allow_ssh, but we are tolerating it because it is using the legacy plugin SDK.
+    The following problems may be the cause of any confusing errors from downstream operations:
+      - .revoke_rules_on_delete: planned value cty.False for a non-computed attribute
+      - .ingress: planned value cty.SetVal([]cty.Value{cty.ObjectVal(map[string]cty.Value{"cidr_blocks":cty.ListVal([]cty.Value{cty.StringVal("0.0.0.0/0")}), "description":cty.StringVal("SSH from VPC"), "from_port":cty.NumberIntVal(22), "ipv6_cidr_blocks":cty.ListValEmpty(cty.String), "prefix_list_ids":cty.ListValEmpty(cty.String), "protocol":cty.StringVal("tcp"), "security_groups":cty.SetValEmpty(cty.String), "self":cty.False, "to_port":cty.NumberIntVal(22)}), cty.ObjectVal(map[string]cty.Value{"cidr_blocks":cty.ListVal([]cty.Value{cty.StringVal("0.0.0.0/0")}), "description":cty.StringVal("TCP from VPC"), "from_port":cty.NumberIntVal(8080), "ipv6_cidr_blocks":cty.ListValEmpty(cty.String), "prefix_list_ids":cty.ListValEmpty(cty.String), "protocol":cty.StringVal("tcp"), "security_groups":cty.SetValEmpty(cty.String), "self":cty.False, "to_port":cty.NumberIntVal(8080)})}) does not match config value cty.SetVal([]cty.Value{cty.ObjectVal(map[string]cty.Value{"cidr_blocks":cty.ListVal([]cty.Value{cty.StringVal("0.0.0.0/0")}), "description":cty.StringVal("SSH from VPC"), "from_port":cty.NumberIntVal(22), "ipv6_cidr_blocks":cty.NullVal(cty.List(cty.String)), "prefix_list_ids":cty.NullVal(cty.List(cty.String)), "protocol":cty.StringVal("tcp"), "security_groups":cty.NullVal(cty.Set(cty.String)), "self":cty.NullVal(cty.Bool), "to_port":cty.NumberIntVal(22)}), cty.ObjectVal(map[string]cty.Value{"cidr_blocks":cty.ListVal([]cty.Value{cty.StringVal("0.0.0.0/0")}), "description":cty.StringVal("TCP from VPC"), "from_port":cty.NumberIntVal(8080), "ipv6_cidr_blocks":cty.NullVal(cty.List(cty.String)), "prefix_list_ids":cty.NullVal(cty.List(cty.String)), "protocol":cty.StringVal("tcp"), "security_groups":cty.NullVal(cty.Set(cty.String)), "self":cty.NullVal(cty.Bool), "to_port":cty.NumberIntVal(8080)})})
+      - .egress: planned value cty.SetVal([]cty.Value{cty.ObjectVal(map[string]cty.Value{"cidr_blocks":cty.ListVal([]cty.Value{cty.StringVal("0.0.0.0/0")}), "description":cty.StringVal(""), "from_port":cty.NumberIntVal(0), "ipv6_cidr_blocks":cty.ListValEmpty(cty.String), "prefix_list_ids":cty.ListValEmpty(cty.String), "protocol":cty.StringVal("-1"), "security_groups":cty.SetValEmpty(cty.String), "self":cty.False, "to_port":cty.NumberIntVal(0)})}) does not match config value cty.SetVal([]cty.Value{cty.ObjectVal(map[string]cty.Value{"cidr_blocks":cty.ListVal([]cty.Value{cty.StringVal("0.0.0.0/0")}), "description":cty.NullVal(cty.String), "from_port":cty.NumberIntVal(0), "ipv6_cidr_blocks":cty.NullVal(cty.List(cty.String)), "prefix_list_ids":cty.NullVal(cty.List(cty.String)), "protocol":cty.StringVal("-1"), "security_groups":cty.NullVal(cty.Set(cty.String)), "self":cty.NullVal(cty.Bool), "to_port":cty.NumberIntVal(0)})})
+2022-06-23T00:09:49.528Z [DEBUG] Resource instance state not found for node "aws_route_table.public-rt", instance aws_route_table.public-rt
+2022-06-23T00:09:49.528Z [INFO]  ReferenceTransformer: reference not found: "var.cidr-open"
+2022-06-23T00:09:49.528Z [DEBUG] ReferenceTransformer: "aws_route_table.public-rt" references: []
+2022-06-23T00:09:49.528Z [DEBUG] refresh: aws_route_table.public-rt: no state, so not refreshing
+2022-06-23T00:09:49.529Z [WARN]  Provider "registry.terraform.io/hashicorp/aws" produced an invalid plan for aws_subnet.public_subnet, but we are tolerating it because it is using the legacy plugin SDK.
+    The following problems may be the cause of any confusing errors from downstream operations:
+      - .ipv6_native: planned value cty.False for a non-computed attribute
+      - .map_public_ip_on_launch: planned value cty.False for a non-computed attribute
+      - .assign_ipv6_address_on_creation: planned value cty.False for a non-computed attribute
+      - .enable_resource_name_dns_aaaa_record_on_launch: planned value cty.False for a non-computed attribute
+      - .enable_dns64: planned value cty.False for a non-computed attribute
+      - .enable_resource_name_dns_a_record_on_launch: planned value cty.False for a non-computed attribute
+2022-06-23T00:09:49.532Z [WARN]  Provider "registry.terraform.io/hashicorp/aws" produced an invalid plan for aws_route_table.public-rt, but we are tolerating it because it is using the legacy plugin SDK.
+    The following problems may be the cause of any confusing errors from downstream operations:
+      - .route: planned value cty.SetVal([]cty.Value{cty.ObjectVal(map[string]cty.Value{"carrier_gateway_id":cty.StringVal(""), "cidr_block":cty.StringVal("0.0.0.0/0"), "destination_prefix_list_id":cty.StringVal(""), "egress_only_gateway_id":cty.StringVal(""), "gateway_id":cty.UnknownVal(cty.String), "instance_id":cty.StringVal(""), "ipv6_cidr_block":cty.StringVal(""), "local_gateway_id":cty.StringVal(""), "nat_gateway_id":cty.StringVal(""), "network_interface_id":cty.StringVal(""), "transit_gateway_id":cty.StringVal(""), "vpc_endpoint_id":cty.StringVal(""), "vpc_peering_connection_id":cty.StringVal("")})}) does not match config value cty.SetVal([]cty.Value{cty.ObjectVal(map[string]cty.Value{"carrier_gateway_id":cty.NullVal(cty.String), "cidr_block":cty.StringVal("0.0.0.0/0"), "destination_prefix_list_id":cty.NullVal(cty.String), "egress_only_gateway_id":cty.NullVal(cty.String), "gateway_id":cty.UnknownVal(cty.String), "instance_id":cty.NullVal(cty.String), "ipv6_cidr_block":cty.NullVal(cty.String), "local_gateway_id":cty.NullVal(cty.String), "nat_gateway_id":cty.NullVal(cty.String), "network_interface_id":cty.NullVal(cty.String), "transit_gateway_id":cty.NullVal(cty.String), "vpc_endpoint_id":cty.NullVal(cty.String), "vpc_peering_connection_id":cty.NullVal(cty.String)})})
+2022-06-23T00:09:49.533Z [DEBUG] Resource instance state not found for node "aws_route_table_association.public-rt", instance aws_route_table_association.public-rt
+2022-06-23T00:09:49.533Z [DEBUG] ReferenceTransformer: "aws_route_table_association.public-rt" references: []
+2022-06-23T00:09:49.533Z [DEBUG] refresh: aws_route_table_association.public-rt: no state, so not refreshing
+2022-06-23T00:09:49.590Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] DEBUG: Response ec2/DescribeImages Details:
+---[ RESPONSE ]--------------------------------------
+HTTP/1.1 200 OK
+Connection: close
+Transfer-Encoding: chunked
+Cache-Control: no-cache, no-store
+Content-Type: text/xml;charset=UTF-8
+Date: Thu, 23 Jun 2022 00:09:49 GMT
+Keep-Alive: timeout=20
+Server: AmazonEC2
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Vary: accept-encoding
+X-Amzn-Requestid: b300487f-1447-49ce-bc66-14293e9a37af
+
+
+-----------------------------------------------------: timestamp=2022-06-23T00:09:49.590Z
+2022-06-23T00:09:49.591Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] [aws-sdk-go] <?xml version="1.0" encoding="UTF-8"?>
+<DescribeImagesResponse xmlns="http://ec2.amazonaws.com/doc/2016-11-15/">
+    <requestId>b300487f-1447-49ce-bc66-14293e9a37af</requestId>
+    <imagesSet>
+        <item>
+            <imageId>ami-019599717e2dd5baa</imageId>
+            <imageLocation>309956199498/RHEL-8.5_HVM-20220127-x86_64-3-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2022-02-01T22:03:37.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.5_HVM-20220127-x86_64-3-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-0a3283a4c18f1873e</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2024-02-01T22:03:37.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-01d12f05657cd01d3</imageId>
+            <imageLocation>309956199498/RHEL-8.3_HVM-20210209-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2021-02-10T15:28:04.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.3_HVM-20210209-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-0ee2eb1654e98aa99</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2023-02-10T15:28:04.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-03951dc3553ee499f</imageId>
+            <imageLocation>309956199498/RHEL-8.2.0_HVM-20210907-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2021-09-14T00:53:52.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.2.0_HVM-20210907-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-0b6fba19dbdc3e202</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2023-09-14T00:53:52.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-03a454637e4aa453d</imageId>
+            <imageLocation>309956199498/RHEL-8.4.0_HVM-20210825-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2021-09-01T22:41:55.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.4.0_HVM-20210825-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-0a723d61baf388350</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2023-09-01T22:41:55.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-043fbed28a389c721</imageId>
+            <imageLocation>309956199498/RHEL-8.0.0_HVM-20190520-x86_64-1-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2019-05-20T21:55:33.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.0.0_HVM-20190520-x86_64-1-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-00e79208b1ea5fe54</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2022-06-30T23:59:59.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-06640050dc3f556bb</imageId>
+            <imageLocation>309956199498/RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2022-05-05T09:32:29.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-0ebc25e8422901c8e</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2024-05-05T09:32:29.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-06644055bed38ebd9</imageId>
+            <imageLocation>309956199498/RHEL-8.5.0_HVM-20211103-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2021-11-04T12:54:23.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.5.0_HVM-20211103-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-081fdba618fb27010</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2023-11-04T12:54:23.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-07b1305cd78401892</imageId>
+            <imageLocation>309956199498/RHEL-8.1.0_HVM-20210907-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2021-09-13T23:12:28.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.1.0_HVM-20210907-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-0d41a2d81432eacab</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2023-09-13T23:12:28.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-096fda3c22c1c990a</imageId>
+            <imageLocation>309956199498/RHEL-8.3.0_HVM-20201031-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2020-11-02T11:01:38.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.3.0_HVM-20201031-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-03f2e24f30f580353</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2022-11-02T11:01:38.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-098bb5d92c8886ca1</imageId>
+            <imageLocation>309956199498/RHEL-8.0.0_HVM-20190426-x86_64-1-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2019-04-26T19:54:17.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.0.0_HVM-20190426-x86_64-1-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-03ba27456fc7b70e0</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2022-06-30T23:59:59.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-098f16afa9edf40be</imageId>
+            <imageLocation>309956199498/RHEL-8.2.0_HVM-20200423-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2020-04-23T18:07:03.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.2.0_HVM-20200423-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-0c4e8263cef786d91</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2022-06-30T23:59:59.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-09b947b170ccd0dbc</imageId>
+            <imageLocation>309956199498/RHEL-8.1.0_HVM-20191029-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2019-10-30T11:02:01.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.1.0_HVM-20191029-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-06e2cb87745a51e9c</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2022-06-30T23:59:59.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-09b99153ee7525f0f</imageId>
+            <imageLocation>309956199498/RHEL-8.0_HVM-20190920-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2019-09-23T19:45:26.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.0_HVM-20190920-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-044a0c72e4dbb668f</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2022-06-30T23:59:59.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-0b0af3577fe5e3532</imageId>
+            <imageLocation>309956199498/RHEL-8.4.0_HVM-20210504-x86_64-2-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2021-05-18T20:09:47.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.4.0_HVM-20210504-x86_64-2-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-03a3ad00558b4d17c</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2023-05-18T20:09:47.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-0c322300a1dd5dc79</imageId>
+            <imageLocation>309956199498/RHEL-8.0.0_HVM-20190618-x86_64-1-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2019-06-19T19:31:31.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.0.0_HVM-20190618-x86_64-1-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-0f9729669b35cf10f</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2022-06-30T23:59:59.000Z</deprecationTime>
+        </item>
+        <item>
+            <imageId>ami-0f88c5923d28f345b</imageId>
+            <imageLocation>309956199498/RHEL-8.2_HVM-20200803-x86_64-0-Hourly2-GP2</imageLocation>
+            <imageState>available</imageState>
+            <imageOwnerId>309956199498</imageOwnerId>
+            <creationDate>2020-08-06T12:38:22.000Z</creationDate>
+            <isPublic>true</isPublic>
+            <architecture>x86_64</architecture>
+            <imageType>machine</imageType>
+            <sriovNetSupport>simple</sriovNetSupport>
+            <name>RHEL-8.2_HVM-20200803-x86_64-0-Hourly2-GP2</name>
+            <description>Provided by Red Hat, Inc.</description>
+            <rootDeviceType>ebs</rootDeviceType>
+            <rootDeviceName>/dev/sda1</rootDeviceName>
+            <blockDeviceMapping>
+                <item>
+                    <deviceName>/dev/sda1</deviceName>
+                    <ebs>
+                        <snapshotId>snap-059e3c20f9c0760f6</snapshotId>
+                        <volumeSize>10</volumeSize>
+                        <deleteOnTermination>true</deleteOnTermination>
+                        <volumeType>gp2</volumeType>
+                        <encrypted>false</encrypted>
+                    </ebs>
+                </item>
+            </blockDeviceMapping>
+            <virtualizationType>hvm</virtualizationType>
+            <hypervisor>xen</hypervisor>
+            <enaSupport>true</enaSupport>
+            <platformDetails>Red Hat Enterprise Linux</platformDetails>
+            <usageOperation>RunInstances:0010</usageOperation>
+            <deprecationTime>2022-08-06T12:38:22.000Z</deprecationTime>
+        </item>
+    </imagesSet>
+</DescribeImagesResponse>: timestamp=2022-06-23T00:09:49.590Z
+2022-06-23T00:09:49.592Z [INFO]  provider.terraform-provider-aws_v3.75.2_x5: 2022/06/23 00:09:49 [DEBUG] aws_ami - adding block device mapping: map[device_name:/dev/sda1 ebs:map[delete_on_termination:true encrypted:false iops:0 snapshot_id:snap-0ebc25e8422901c8e throughput:0 volume_size:10 volume_type:gp2] virtual_name:]: timestamp=2022-06-23T00:09:49.591Z
+2022-06-23T00:09:49.594Z [DEBUG] Resource instance state not found for node "aws_instance.k8s", instance aws_instance.k8s
+2022-06-23T00:09:49.594Z [INFO]  ReferenceTransformer: reference not found: "var.key-name"
+2022-06-23T00:09:49.594Z [INFO]  ReferenceTransformer: reference not found: "var.instance-type-k8s"
+2022-06-23T00:09:49.594Z [DEBUG] ReferenceTransformer: "aws_instance.k8s" references: []
+2022-06-23T00:09:49.594Z [DEBUG] refresh: aws_instance.k8s: no state, so not refreshing
+2022-06-23T00:09:49.595Z [DEBUG] Resource instance state not found for node "aws_instance.ansible", instance aws_instance.ansible
+2022-06-23T00:09:49.596Z [INFO]  ReferenceTransformer: reference not found: "var.key-name"
+2022-06-23T00:09:49.596Z [INFO]  ReferenceTransformer: reference not found: "var.instance-type-ansible"
+2022-06-23T00:09:49.596Z [DEBUG] ReferenceTransformer: "aws_instance.ansible" references: []
+2022-06-23T00:09:49.596Z [DEBUG] refresh: aws_instance.ansible: no state, so not refreshing
+2022-06-23T00:09:49.597Z [DEBUG] Resource instance state not found for node "aws_instance.jenkins", instance aws_instance.jenkins
+2022-06-23T00:09:49.597Z [INFO]  ReferenceTransformer: reference not found: "var.instance-type-jenkins"
+2022-06-23T00:09:49.597Z [INFO]  ReferenceTransformer: reference not found: "var.key-name"
+2022-06-23T00:09:49.597Z [DEBUG] ReferenceTransformer: "aws_instance.jenkins" references: []
+2022-06-23T00:09:49.597Z [DEBUG] refresh: aws_instance.jenkins: no state, so not refreshing
+2022-06-23T00:09:49.614Z [WARN]  Provider "registry.terraform.io/hashicorp/aws" produced an invalid plan for aws_instance.ansible, but we are tolerating it because it is using the legacy plugin SDK.
+    The following problems may be the cause of any confusing errors from downstream operations:
+      - .source_dest_check: planned value cty.True for a non-computed attribute
+      - .user_data: planned value cty.StringVal("55b173240fd8866754aef9ed0960a04be4c968b5") does not match config value cty.StringVal("#!/bin/bash\nsudo yum update -y\nsudo yum -y install python3-pip ansible git\ncd /home/ec2-user \ngit clone https://github.com/turancyberhub/ansible_DevOps2022.git\nsudo chown -R ec2-user:ec2-user ansible_DevOps2022/")
+      - .vpc_security_group_ids: planned value cty.UnknownVal(cty.Set(cty.String)) does not match config value cty.SetVal([]cty.Value{cty.UnknownVal(cty.String)})
+      - .get_password_data: planned value cty.False for a non-computed attribute
+      - .capacity_reservation_specification: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .ebs_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .enclave_options: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .metadata_options: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .ephemeral_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .network_interface: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .root_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+2022-06-23T00:09:49.615Z [WARN]  Provider "registry.terraform.io/hashicorp/aws" produced an invalid plan for aws_instance.k8s, but we are tolerating it because it is using the legacy plugin SDK.
+    The following problems may be the cause of any confusing errors from downstream operations:
+      - .vpc_security_group_ids: planned value cty.UnknownVal(cty.Set(cty.String)) does not match config value cty.SetVal([]cty.Value{cty.UnknownVal(cty.String)})
+      - .get_password_data: planned value cty.False for a non-computed attribute
+      - .source_dest_check: planned value cty.True for a non-computed attribute
+      - .ephemeral_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .network_interface: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .root_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .metadata_options: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .capacity_reservation_specification: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .ebs_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .enclave_options: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+2022-06-23T00:09:49.616Z [DEBUG] Resource instance state not found for node "aws_eip.eip_k8s", instance aws_eip.eip_k8s
+2022-06-23T00:09:49.616Z [DEBUG] ReferenceTransformer: "aws_eip.eip_k8s" references: []
+2022-06-23T00:09:49.616Z [DEBUG] refresh: aws_eip.eip_k8s: no state, so not refreshing
+2022-06-23T00:09:49.617Z [DEBUG] Resource instance state not found for node "aws_eip.eip_all", instance aws_eip.eip_all
+2022-06-23T00:09:49.617Z [DEBUG] ReferenceTransformer: "aws_eip.eip_all" references: []
+2022-06-23T00:09:49.617Z [DEBUG] refresh: aws_eip.eip_all: no state, so not refreshing
+2022-06-23T00:09:49.622Z [WARN]  Provider "registry.terraform.io/hashicorp/aws" produced an invalid plan for aws_instance.jenkins, but we are tolerating it because it is using the legacy plugin SDK.
+    The following problems may be the cause of any confusing errors from downstream operations:
+      - .get_password_data: planned value cty.False for a non-computed attribute
+      - .source_dest_check: planned value cty.True for a non-computed attribute
+      - .vpc_security_group_ids: planned value cty.UnknownVal(cty.Set(cty.String)) does not match config value cty.SetVal([]cty.Value{cty.UnknownVal(cty.String)})
+      - .capacity_reservation_specification: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .ebs_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .enclave_options: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .metadata_options: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .ephemeral_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .network_interface: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+      - .root_block_device: attribute representing nested block must not be unknown itself; set nested attribute values to unknown instead
+2022-06-23T00:09:49.623Z [DEBUG] Resource instance state not found for node "aws_eip.eip_jenkins", instance aws_eip.eip_jenkins
+2022-06-23T00:09:49.623Z [DEBUG] ReferenceTransformer: "aws_eip.eip_jenkins" references: []
+2022-06-23T00:09:49.623Z [DEBUG] refresh: aws_eip.eip_jenkins: no state, so not refreshing
+2022-06-23T00:09:49.649Z [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2022-06-23T00:09:49.656Z [DEBUG] provider: plugin process exited: path=.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.2/linux_amd64/terraform-provider-aws_v3.75.2_x5 pid=7098
+2022-06-23T00:09:49.656Z [DEBUG] provider: plugin exited
+2022-06-23T00:09:49.656Z [DEBUG] building apply graph to check for errors
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_vpc.vpc_tf", instance aws_vpc.vpc_tf
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_security_group.allow_ssh", instance aws_security_group.allow_ssh
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_eip.eip_jenkins", instance aws_eip.eip_jenkins
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_eip.eip_k8s", instance aws_eip.eip_k8s
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_route_table.public-rt", instance aws_route_table.public-rt
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_internet_gateway.gateway", instance aws_internet_gateway.gateway
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_subnet.public_subnet", instance aws_subnet.public_subnet
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_instance.ansible", instance aws_instance.ansible
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_eip.eip_all", instance aws_eip.eip_all
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_route_table_association.public-rt", instance aws_route_table_association.public-rt
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_instance.k8s", instance aws_instance.k8s
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_instance.jenkins", instance aws_instance.jenkins
+2022-06-23T00:09:49.657Z [DEBUG] Resource state not found for node "aws_key_pair.keypair", instance aws_key_pair.keypair
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_eip.eip_jenkins" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_subnet.public_subnet (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_vpc.vpc_tf (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "data.aws_ami.rhel (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_internet_gateway.gateway (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_internet_gateway.gateway" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_route_table_association.public-rt" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_eip.eip_k8s (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_instance.ansible (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_eip.eip_jenkins (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_subnet.public_subnet" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_instance.ansible" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_key_pair.keypair (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_instance.k8s" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_instance.jenkins" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_vpc.vpc_tf" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_instance.k8s (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_security_group.allow_ssh (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_eip.eip_k8s" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_route_table_association.public-rt (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_eip.eip_all" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_key_pair.keypair" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_route_table.public-rt (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_route_table.public-rt" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_security_group.allow_ssh" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_eip.eip_all (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] ProviderTransformer: "aws_instance.jenkins (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/hashicorp/aws"]
+2022-06-23T00:09:49.658Z [DEBUG] pruning unused provider["registry.terraform.io/hashicorp/aws"].ohio
+2022-06-23T00:09:49.659Z [DEBUG] ReferenceTransformer: "aws_instance.k8s (expand)" references: []
+2022-06-23T00:09:49.659Z [DEBUG] ReferenceTransformer: "aws_route_table_association.public-rt" references: [aws_route_table.public-rt (expand) aws_route_table.public-rt aws_route_table.public-rt aws_subnet.public_subnet (expand) aws_subnet.public_subnet aws_subnet.public_subnet]
+2022-06-23T00:09:49.659Z [DEBUG] ReferenceTransformer: "aws_instance.k8s" references: [aws_subnet.public_subnet (expand) aws_subnet.public_subnet aws_subnet.public_subnet var.instance-type-k8s aws_security_group.allow_ssh (expand) aws_security_group.allow_ssh aws_security_group.allow_ssh data.aws_ami.rhel (expand) var.key-name]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_eip.eip_k8s (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_security_group.allow_ssh (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_key_pair.keypair" references: [var.key-name]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_instance.jenkins" references: [var.instance-type-jenkins data.aws_ami.rhel (expand) aws_security_group.allow_ssh (expand) aws_security_group.allow_ssh aws_security_group.allow_ssh var.key-name aws_subnet.public_subnet (expand) aws_subnet.public_subnet aws_subnet.public_subnet]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/hashicorp/aws\"]" references: [var.aws_region]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_eip.eip_jenkins" references: [aws_instance.jenkins aws_instance.jenkins aws_instance.jenkins (expand)]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_instance.jenkins (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.instance-type-k8s" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.sg_name" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.vpc_cidr" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.aws_region" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_vpc.vpc_tf" references: [var.vpc_cidr]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_security_group.allow_ssh" references: [var.sg_name aws_vpc.vpc_tf aws_vpc.vpc_tf aws_vpc.vpc_tf (expand) var.cidr-open var.protocol var.protocol var.cidr-open var.cidr-open]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_subnet.public_subnet (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_route_table.public-rt (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "output.jenkins_instance_public_ip" references: [aws_instance.jenkins aws_instance.jenkins aws_instance.jenkins (expand)]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_eip.eip_k8s" references: [aws_instance.k8s (expand) aws_instance.k8s aws_instance.k8s]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_key_pair.keypair (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.az-psubnet" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.instance-type-jenkins" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "output.kubernetes_instance_public_ip" references: [aws_instance.k8s (expand) aws_instance.k8s aws_instance.k8s]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_route_table.public-rt" references: [aws_vpc.vpc_tf aws_vpc.vpc_tf aws_vpc.vpc_tf (expand) var.cidr-open aws_internet_gateway.gateway aws_internet_gateway.gateway aws_internet_gateway.gateway (expand)]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_route_table_association.public-rt (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "data.aws_ami.rhel (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.key-name" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_internet_gateway.gateway" references: [aws_vpc.vpc_tf aws_vpc.vpc_tf aws_vpc.vpc_tf (expand)]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_eip.eip_all (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_instance.ansible (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_eip.eip_jenkins (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_internet_gateway.gateway (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.public_subnet_cidr" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.instance-type-ansible" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.cidr-open" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_subnet.public_subnet" references: [var.public_subnet_cidr aws_vpc.vpc_tf aws_vpc.vpc_tf aws_vpc.vpc_tf (expand) var.az-psubnet]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_instance.ansible" references: [aws_security_group.allow_ssh (expand) aws_security_group.allow_ssh aws_security_group.allow_ssh data.aws_ami.rhel (expand) var.key-name aws_subnet.public_subnet (expand) aws_subnet.public_subnet aws_subnet.public_subnet var.instance-type-ansible]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_eip.eip_all" references: [aws_instance.ansible (expand) aws_instance.ansible aws_instance.ansible]
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "aws_vpc.vpc_tf (expand)" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "var.protocol" references: []
+2022-06-23T00:09:49.660Z [DEBUG] ReferenceTransformer: "output.ansible_instance_public_ip" references: [aws_instance.ansible (expand) aws_instance.ansible aws_instance.ansible]
+2022-06-23T00:09:49.663Z [INFO]  backend/local: plan operation completed
